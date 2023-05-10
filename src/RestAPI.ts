@@ -2,6 +2,7 @@ import Express from "express";
 import BodyParser from "body-parser";
 import ApiModule from "./modules/ApiModule";
 import { IncomingHttpHeaders } from "http";
+import Cors from "cors";
 import { ConfigTemplate } from "./Config";
 import Config from "./Config";
 
@@ -30,6 +31,7 @@ export default class RestAPI {
     private config: ConfigTemplate;
 
     private constructor() {
+        this.app.use(Cors());
         this.app.use(BodyParser.json());
         this.config = Config();
     }
